@@ -1,0 +1,77 @@
+# The query uses CTE to retrieve the count of Top 5 customers living in each country
+WITH top_5_count_cte (customer_id, first_name, last_name, 
+country, city) 
+AS
+ --the top 5 customers from the top 10 cities who’ve paid the highest total amounts to Rockbuster.
+      (SELECT
+      B.customer_id,
+      B.first_name,
+      B.last_name,
+      E.country,
+      D.city,
+      SUM (A.amount) AS total_amount_paid
+      FROM
+      payment A
+      JOIN customer B ON A.customer_id = B.customer_id
+      JOIN address C ON B.address_id = C.address_id
+      JOIN city D ON C.city_id = D.city_id
+      JOIN country E ON D.country_id = E.country_id
+      WHERE D.city in 
+           --top 10 cities that fall within the top 10 countries you identified in step 1
+          (
+          SELECT
+          D.city
+          FROM
+          customer B
+          JOIN address C ON B.address_id = C.address_id
+          JOIN city D ON C.city_id = D.city_id
+          JOIN country E ON D.country_id = E.country_id
+          WHERE E.country IN (
+                  --top 10 countries for Rockbuster
+                  SELECT
+                  E.country
+                  FROM
+                  customer B
+                  JOIN address C ON B.address_id = C.address_id
+                  JOIN city D ON C.city_id = D.city_id
+                  JOIN country E ON D.country_id = E.country_id
+                  GROUP BY
+                  E.country
+                  ORDER BY
+                  COUNT(B.customer_id) DESC
+                  LIMIT
+                  10)
+          GROUP BY
+          E.country,
+          D.city
+          ORDER BY
+          COUNT(B.customer_id) DESC
+          LIMIT
+          10
+          )
+    GROUP BY
+    B.customer_id,
+    B.first_name,
+    B.last_name,
+    E.country,
+    D.city
+    ORDER BY
+    SUM(A.amount) DESC
+    LIMIT
+    5)
+SELECT
+--3 columns:“country”,“all_customer_count” with the total number of customers in each country,“top_customer_count” showing how many of the top 5 customers live in each country
+E.country,
+COUNT (DISTINCT B.customer_id) AS all_customer_count,
+COUNT (DISTINCT top_5_count_cte) AS top_customer_count
+FROM customer B
+JOIN address C ON B.address_id = C.address_id
+JOIN city D ON C.city_id = D.city_id
+JOIN country E ON D.country_id = E.country_id
+LEFT JOIN top_5_count_cte ON B.customer_id = 
+top_5_count_cte.customer_id
+GROUP BY
+E.country
+ORDER BY
+all_customer_count DESC
+LIMIT 10
