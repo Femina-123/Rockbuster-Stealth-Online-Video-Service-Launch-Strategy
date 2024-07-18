@@ -28,8 +28,6 @@ The data set used in this project includes information about Rockbuster’s film
 Use SQL queries to explore and analyze the data.
 Answer the key business questions posed by the management.
 Visualize the results for presentation to the Rockbuster Stealth Management Board.
-# License
-This project is licensed under the MIT License. See the LICENSE file for more details.
 
 # Acknowledgements
 Thanks to
