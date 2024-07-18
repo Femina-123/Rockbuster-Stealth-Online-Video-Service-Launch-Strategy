@@ -34,4 +34,4 @@ This project is licensed under the MIT License. See the LICENSE file for more de
 # Acknowledgements
 Thanks to
 Rockbuster Stealth LLC for providing the data set.
-PostgreSQL for the database management system.
+And PostgreSQL for the database management system.
