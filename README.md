@@ -8,28 +8,28 @@ To answer these questions, you'll query the data using SQL (structured query lan
 # Key Questions and Objectives
 The Rockbuster Stealth Management Board has asked a series of business questions and they expect data-driven answers that they can use for their 2020 company strategy. Here are the main questions they’d like to answer:
 
-1.Which movies contributed the most/least to revenue gain?
-2.What was the average rental duration for all videos?
-3.Which countries are Rockbuster customers based in?
-4.Where are customers with a high lifetime value based?
-5.Do sales figures vary between geographic regions?
+- Which movies contributed the most/least to revenue gain?
+- What was the average rental duration for all videos?
+- Which countries are Rockbuster customers based in?
+- Where are customers with a high lifetime value based?
+- Do sales figures vary between geographic regions?
 
 # Data Set
 The data set used in this project includes information about Rockbuster’s film inventory, customers, and payments, among other things. Here are some key points about the data set:
 
-1.It’s around 3MB and contains several files.
-2.A relationship exists between two tables if a column name is present in both tables.
+- It’s around 3MB and contains several files.
+- A relationship exists between two tables if a column name is present in both tables.
 # Installation and Setup
-1.Download and install PostgreSQL:
+- Download and install PostgreSQL:
 
-2.Load the Rockbuster data set into PostgreSQL.
+- Load the Rockbuster data set into PostgreSQL.
 
 # Usage
-Use SQL queries to explore and analyze the data.
-Answer the key business questions posed by the management.
-Visualize the results for presentation to the Rockbuster Stealth Management Board.
+- Use SQL queries to explore and analyze the data.
+- Answer the key business questions posed by the management.
+- Visualize the results for presentation to the Rockbuster Stealth Management Board.
 
 # Acknowledgements
-Thanks to
-Rockbuster Stealth LLC for providing the data set.
-And PostgreSQL for the database management system.
+Thanks to:
+- Rockbuster Stealth LLC for providing the data set.
+- And PostgreSQL for the database management system.
